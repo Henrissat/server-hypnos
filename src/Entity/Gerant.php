@@ -53,6 +53,11 @@ class Gerant implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function __toString(): string
+    {
+       return $this->email;
+    }
+
     /**
      * A visual identifier that represents this user.
      *
@@ -70,7 +75,7 @@ class Gerant implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }

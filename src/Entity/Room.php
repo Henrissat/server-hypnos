@@ -30,8 +30,9 @@ class Room
     #[ORM\Column(type: 'integer')]
     private $price;
 
-    #[ORM\Column(type: 'integer')]
-    private $idHotel;
+    #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'rooms')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $Hotel;
 
     public function getId(): ?int
     {
@@ -98,14 +99,14 @@ class Room
         return $this;
     }
 
-    public function getIdHotel(): int
+    public function getHotel(): ?Hotel
     {
-        return $this->idHotel;
+        return $this->Hotel;
     }
 
-    public function setIdHotel(string $idHotel): self
+    public function setHotel(?Hotel $Hotel): self
     {
-        $this->idHotel = $idHotel;
+        $this->Hotel = $Hotel;
 
         return $this;
     }
