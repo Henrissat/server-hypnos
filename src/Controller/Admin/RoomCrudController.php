@@ -10,12 +10,14 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class RoomCrudController extends AbstractCrudController
 {
     //chemin pour les images de mes chambres
     public const ROOM_BASE_PATH = 'upload/images/rooms';
     public const ROOM_UPLOAD_DIR = 'public/upload/images/rooms';
+
     public static function getEntityFqcn(): string
     {
         return Room::class;
@@ -26,7 +28,7 @@ class RoomCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name', 'label')->setRequired(true),
+            TextField::new('name'),
             TextEditorField::new('description'),
             TextEditorField::new('Shortdescription'),
             ImageField::new('Pictures')
@@ -35,6 +37,7 @@ class RoomCrudController extends AbstractCrudController
                 //Autoriser le clic sur la colonne pour trier le contenu du contrôle en fonction du champ de cette colonne.
                 ->setSortable(false),
             MoneyField::new('Price')->setCurrency('EUR'),
+            AssociationField::new('Hotel'),
         ];
     }
     
