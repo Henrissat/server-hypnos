@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class RoomCrudController extends AbstractCrudController
 {
+    //public const ACTION_DUPLICATE = 'dupliquer';
     //chemin pour les images de mes chambres
     public const ROOM_BASE_PATH = 'upload/images/rooms';
     public const ROOM_UPLOAD_DIR = 'public/upload/images/rooms';
@@ -22,6 +23,15 @@ class RoomCrudController extends AbstractCrudController
     {
         return Room::class;
     }
+
+    /*ajout d'un bouton dupliquer une chambre
+    public function configureActions(Actions $actions): Actions
+    {
+        $duplicate = Action::new(seld::ACTION_DUPLICATE)
+            ->linkToCrudAction('duplicateProduct');
+        return $actions
+            ->add(Crud::PAGE_EDIT, $duplicate);
+    }*/
 
     
     public function configureFields(string $pageName): iterable
