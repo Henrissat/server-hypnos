@@ -80,15 +80,15 @@ class Gerant implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        // guarantee every Gerant at least has ROLE_
+        $roles[] = "ROLE_ADMIN";
 
         return array_unique($roles);
     }
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
+        $this->roles[] = $roles;
 
         return $this;
     }

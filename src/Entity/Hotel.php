@@ -17,6 +17,12 @@ class Hotel
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    public function __toString()
+    {
+        $result = $this->name;
+        return  (string) $result;
+    }
+
     #[ORM\Column(type: 'string', length: 100)]
     private $name;
 
