@@ -39,12 +39,9 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
-<<<<<<< HEAD
     "require-dev": {
         "symfony/maker-bundle": "^1.38"
     },
-=======
->>>>>>> Formulaire
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
@@ -95,8 +92,5 @@
             "allow-contrib": false,
             "require": "6.0.*"
         }
-    },
-    "require-dev": {
-        "symfony/maker-bundle": "^1.38"
     }
 }
