@@ -9,7 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\FileType;
+//use EasyCorp\Bundle\EasyAdminBundle\Field\FileType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
@@ -47,7 +47,7 @@ class RoomCrudController extends AbstractCrudController
                 ->setUploadDir(self::ROOM_UPLOAD_DIR)
                 //Autoriser le clic sur la colonne pour trier le contenu du contrôle en fonction du champ de cette colonne.
                 ->setSortable(false),
-            FileType::new('galery_img'),
+            //FileType::new('galery_img'),
             MoneyField::new('Price')->setCurrency('EUR'),
             AssociationField::new('Hotel'),
         ];
