@@ -39,7 +39,7 @@ class RoomCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name_room'),
+            TextField::new('name'),
             TextEditorField::new('description'),
             TextEditorField::new('Shortdescription'),
             ImageField::new('Pictures')
