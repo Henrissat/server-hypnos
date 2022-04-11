@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\RoomRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RoomRepository::class)]
@@ -51,6 +53,14 @@ class Room
     #[ORM\ManyToOne(targetEntity: Hotel::class, inversedBy: 'rooms')]
     #[ORM\JoinColumn(nullable: false)]
     private $Hotel;
+
+    #[ORM\OneToMany(mappedBy: 'rooms', targetEntity: GaleryImg::class)]
+    private $galeryImgs;
+
+    public function __construct()
+    {
+        $this->galeryImgs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -197,6 +207,36 @@ class Room
     public function setHotel(?Hotel $Hotel): self
     {
         $this->Hotel = $Hotel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GaleryImg>
+     */
+    public function getGaleryImgs(): Collection
+    {
+        return $this->galeryImgs;
+    }
+
+    public function addGaleryImg(GaleryImg $galeryImg): self
+    {
+        if (!$this->galeryImgs->contains($galeryImg)) {
+            $this->galeryImgs[] = $galeryImg;
+            $galeryImg->setRooms($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGaleryImg(GaleryImg $galeryImg): self
+    {
+        if ($this->galeryImgs->removeElement($galeryImg)) {
+            // set the owning side to null (unless already changed)
+            if ($galeryImg->getRooms() === $this) {
+                $galeryImg->setRooms(null);
+            }
+        }
 
         return $this;
     }
