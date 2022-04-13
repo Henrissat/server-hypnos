@@ -16,7 +16,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserController extends AbstractController
 {
-    #[Route('/account', name: 'app_register')]
+    #[Route('/account', name: 'app_account')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserLoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();

@@ -19,7 +19,7 @@ class UserLoginAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'app_login';
+    public const LOGIN_ROUTE = 'user_login';
 
     private UrlGeneratorInterface $urlGenerator;
 
@@ -50,7 +50,7 @@ class UserLoginAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('https://hypnos-hotels.herokuapp.com/'));
+        return new RedirectResponse($this->urlGenerator->generate('app_hypnos'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
