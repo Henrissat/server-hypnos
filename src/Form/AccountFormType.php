@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Gerant;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationFormType extends AbstractType
+class AccountFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -22,16 +22,8 @@ class RegistrationFormType extends AbstractType
             ->add('email')
             ->add('firstname')
             ->add('lastname')
-            ->add('roles', ChoiceType::class, [
-                'required' => true,
-                'multiple' => false,
-                'expanded' => false,
-                'label' => 'Rôles',
-                'choices' => [
-                    'Gerant' => "ROLE_ADMIN",
-                    'Admin' => "ROLE_SUPERADMIN",
-                ],
-            ])
+            ->add('adress')
+            ->add('phone')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -59,25 +51,12 @@ class RegistrationFormType extends AbstractType
             ])
         ;
 
-        
-        //Gérer la transformation des roles en Array/string
-        $builder->get('roles')
-                ->addModelTransformer(new CallbackTransformer(
-                    function ($rolesArray) {
-                        //cahnger array en string
-                        return count($rolesArray) ? $rolesArray[0] : null;
-                    },
-                    function ($rolesString) {
-                        //change string en array
-                        return [$rolesString];
-                    }
-                ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Gerant::class,
+            'data_class' => User::class,
         ]);
     }
 }

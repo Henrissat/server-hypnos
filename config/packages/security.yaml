@@ -17,10 +17,13 @@ security:
 
     # Comment récupérer les Utilisateur et Gerant
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        app_gerant_provider:
             entity:
                 class: App\Entity\Gerant
+                property: email
+        app_user_provider:
+            entity:
+                class: App\Entity\User
                 property: email
 
         # used to reload user from session & other features (e.g. switch_user)
@@ -31,7 +34,7 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            custom_authenticator: App\Security\AppLoginAuthenticator
+            custom_authenticator: App\Security\UserLoginAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -40,13 +43,20 @@ security:
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
+        Administrator:
+            lazy: true
+            provider: app_gerant_provider
+            custom_authenticator: App\Security\AppLoginAuthenticator
+            logout:
+                path: app_logout
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-         - { path: ^/gerant, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/gerant, roles: ROLE_ADMIN }
         # - { path: ^/admin, roles: ROLE_SUPERADMIN }
 
 when@test:
