@@ -34,9 +34,10 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            context : login
             custom_authenticator: App\Security\UserLoginAuthenticator
             logout:
-                path: app_logout
+                path: user_logout
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -46,6 +47,7 @@ security:
         Administrator:
             lazy: true
             provider: app_gerant_provider
+            context : login_admin
             custom_authenticator: App\Security\AppLoginAuthenticator
             logout:
                 path: app_logout
