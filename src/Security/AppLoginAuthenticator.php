@@ -1,5 +1,5 @@
 <?php
-
+//AppLoginAuthenticator Gestion de la connexion/redirection apres connexion Gerant
 namespace App\Security;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;

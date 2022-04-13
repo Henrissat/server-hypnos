@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Gerant;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,6 +22,15 @@ class RegistrationFormType extends AbstractType
             ->add('email')
             ->add('firstname')
             ->add('lastname')
+            ->add('roles', ChoiceType::class, [
+                'required' => false,
+                'multiple' => false,
+                'expanded' => false,
+                'choices' => [
+                    'Gerant' => 'ROLE_ADMIN',
+                    'Admin' => 'ROLE_SUPERADMIN',
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -46,6 +57,19 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
         ;
+
+        //Gérer la transformation des roles en Array/string
+        $builder->get('roles')
+                ->addModelTransformer(new CallbackTransformer(
+                    function ($rolesArray) {
+                        //cahnger array en string
+                        return count($rolesArray) ? $rolesArray[0] : null;
+                    },
+                    function ($roleString) {
+                        //change string en array
+                        return [$rolesString];
+                    }
+                )); 
     }
 
     public function configureOptions(OptionsResolver $resolver): void

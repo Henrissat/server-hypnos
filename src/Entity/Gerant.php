@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: GerantRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'Il y a déjà un compte avec cet email')]
-#[UniqueEntity(fields: ['email'], message: 'Il y a déjà un compte avec cet email')]
+
 class Gerant implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]

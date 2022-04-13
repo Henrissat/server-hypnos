@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hypnos Admin
+{% endblock %}
+
+{% block body %}
+	<section class="py-5 text-center container">
+		<div class="row py-lg-5">
+			<div class="col-lg-6 col-md-8 mx-auto">
+				<h1 class="fw-light">Hypnos Admin Bienvenue</h1>
+				<p class="lead text-muted">Bonjour, bienvenue sur la page d'administration de Hypnos, pour vous enregistrez merci de cliquer sur le lien ci-dessous</p>
+				<p>
+					<a href="/register" class="btn btn-primary my-2">Je suis Gérant</a>
+					<a href="/login" class="btn btn-secondary my-2">Je suis déjà Gérant</a>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}
