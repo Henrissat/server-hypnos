@@ -127,12 +127,12 @@ class Gerant implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PictureAuthenticatedUserInterface
      */
-    public function getPicture(): string
+    public function getPicture(): ?string
     {
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(string $picture): ?self
     {
         $this->picture = $picture;
 

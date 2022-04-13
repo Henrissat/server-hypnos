@@ -26,22 +26,25 @@ class Room
     #[ORM\Column(type: 'text', nullable: true)]
     private $description;
 
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $content;
+
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $pictures;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: false)]
     private $capacity;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $size;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $bed;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: false)]
     private $price;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $quantity_rooms;
 
     #[ORM\Column(type: 'string', length: 50)]
@@ -99,6 +102,18 @@ class Room
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(?string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }

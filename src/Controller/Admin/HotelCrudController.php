@@ -29,22 +29,22 @@ class HotelCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name'),
-            TextField::new('city'),
-            TextField::new('Adress'),
-            TextField::new('Title'),
+            TextField::new('name', 'Nom de l\'hôtel'),
+            TextField::new('city', 'Ville'),
+            TextField::new('Adress', 'Adresse'),
+            TextField::new('Title', 'Titre'),
             TextEditorField::new('Description'),
-            ImageField::new('img_header')
+            ImageField::new('img_header', 'Image d\'entête')
                 ->setBasePath(self::HOTEL_BASE_PATH)
                 ->setUploadDir(self::HOTEL_UPLOAD_DIR)
                 //Autoriser le clic sur la colonne pour trier le contenu du contrôle en fonction du champ de cette colonne.
                 ->setSortable(false),
-            ImageField::new('Vignette')
+            ImageField::new('Vignette', 'Image de vignette')
                 ->setBasePath(self::HOTEL_BASE_PATH)
                 ->setUploadDir(self::HOTEL_UPLOAD_DIR)
                 //Autoriser le clic sur la colonne pour trier le contenu du contrôle en fonction du champ de cette colonne.
                 ->setSortable(false),
-            IntegerField::new('stars'),
+            IntegerField::new('stars', 'Etoile'),
         ];
     }
     
