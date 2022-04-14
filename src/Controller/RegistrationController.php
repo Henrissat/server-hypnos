@@ -16,6 +16,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
+    /**
+     * Page d'enregistrement des admins
+     */
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppLoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
@@ -24,6 +27,9 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // instancier le username
+            $user->setUsername($form->get('username')->getData());
+
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(

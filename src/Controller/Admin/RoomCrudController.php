@@ -64,7 +64,7 @@ class RoomCrudController extends AbstractCrudController
             TextEditorField::new('description', 'Description'),
             TextEditorField::new('shortdescription', 'Courte description'),
             TextEditorField::new('content', 'Contenu de la page'),
-            ImageField::new('Pictures', 'Photo')
+            ImageField::new('pictures', 'Photo')
                 ->setBasePath(self::ROOM_BASE_PATH)
                 ->setUploadDir(self::ROOM_UPLOAD_DIR)
                 //Autoriser le clic sur la colonne pour trier le contenu du contrôle en fonction du champ de cette colonne.
@@ -74,7 +74,7 @@ class RoomCrudController extends AbstractCrudController
                 ->setUploadDir(self::ROOM_UPLOAD_DIR)
                 //Autoriser le clic sur la colonne pour trier le contenu du contrôle en fonction du champ de cette colonne.
                 ->setSortable(false),
-            MoneyField::new('Price', 'Prix')->setCurrency('EUR'),
+            MoneyField::new('price', 'Prix')->setCurrency('EUR'),
             IntegerField::new('capacity', 'Capacité'),
             IntegerField::new('size', 'Taille'),
             IntegerField::new('bed', 'Nombre de lit'),
