@@ -88,7 +88,7 @@ class Gerant implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setRoles(array $roles): self
     {
-        $this->roles[] = $roles;
+        $this->roles = $roles;
 
         return $this;
     }
