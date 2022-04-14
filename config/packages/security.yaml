@@ -31,6 +31,16 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        #gestion du firewalls pour les 2 entity dans 2 context différents    
+        Administrator:
+            lazy: true
+            provider: app_gerant_provider
+            context : login_admin
+            custom_authenticator: App\Security\AppLoginAuthenticator
+            logout:
+                path: app_logout
+
         main:
             lazy: true
             provider: app_user_provider
@@ -44,13 +54,6 @@ security:
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
-        Administrator:
-            lazy: true
-            provider: app_gerant_provider
-            context : login_admin
-            custom_authenticator: App\Security\AppLoginAuthenticator
-            logout:
-                path: app_logout
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 

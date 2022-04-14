@@ -65,7 +65,7 @@ class RegistrationFormType extends AbstractType
                 ->addModelTransformer(new CallbackTransformer(
                     function ($rolesArray) {
                         //cahnger array en string
-                        return count($rolesArray) ? $rolesArray[0] : null;
+                        return count($rolesArray)? $rolesArray[0]: null;
                     },
                     function ($rolesString) {
                         //change string en array

@@ -12,6 +12,7 @@ class RedirectionUserController extends AbstractController
     
     public function index(): Response
     {
+        //redirection vers le site Hypnos
         return $this->redirect('https://hypnos-hotels.herokuapp.com/');
     }
 }
