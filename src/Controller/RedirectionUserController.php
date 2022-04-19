@@ -8,8 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RedirectionUserController extends AbstractController
 {
+    /**
+     * Page redirection des utilsateurs apres inscription
+     */
     #[Route('/hypnos', name: 'app_hypnos')]
-    
     public function index(): Response
     {
         //redirection vers le site Hypnos
