@@ -22,6 +22,7 @@ class DashboardController extends AbstractDashboardController
     ) {
     }
 
+    //#[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
@@ -29,7 +30,7 @@ class DashboardController extends AbstractDashboardController
         //return parent::index();
         
         //return $this->render('admin/dashboard.html.twig');
-
+        
         //créer la rediction vers les CRUD entity déjà créées
         $url = $this->adminUrlGenerator
             ->setController(RoomCrudController::class)
