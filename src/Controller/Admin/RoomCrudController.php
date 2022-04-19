@@ -61,12 +61,9 @@ class RoomCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name', 'Nom de la suite'),
-            TextEditorField::new('description', 'Description')
-                ->setLabel('description'),
-            TextEditorField::new('shortdescription', 'Courte description', \ENT_COMPAT | \ENT_HTML5)
-                ->setLabel('shortdescription'),
-            TextEditorField::new('content', 'Contenu de la page')
-                ->setLabel('content'),
+            TextField::new('description', 'Description'),
+            TextField::new('shortdescription', 'Courte description'),
+            TextField::new('content', 'Contenu de la page'),
             ImageField::new('pictures', 'Photo')
                 ->setBasePath(self::ROOM_BASE_PATH)
                 ->setUploadDir(self::ROOM_UPLOAD_DIR)
