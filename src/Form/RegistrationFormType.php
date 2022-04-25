@@ -28,6 +28,7 @@ class RegistrationFormType extends AbstractType
                 'expanded' => false,
                 'label' => 'Rôles',
                 'choices' => [
+                    'sélectionner votre rôle'=> "ROLE_ADMIN",
                     'Gerant' => "ROLE_ADMIN",
                     'Admin' => "ROLE_SUPERADMIN",
                 ],
