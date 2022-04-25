@@ -62,9 +62,9 @@ security:
     access_control:
         - { path: ^/profile, roles: ROLE_USER }
         # - { path: ^/(login|register), roles: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/gerant, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/, roles: IS_AUTHENTICATED_FULLY}
-        # - { path: ^/admin, roles: ROLE_SUPERADMIN }
+         - { path: ^/admin, roles: ROLE_SUPERADMIN }
 
 when@test:
     security:
