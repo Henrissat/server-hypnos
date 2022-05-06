@@ -8,6 +8,8 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -19,7 +21,13 @@ class AccountFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', EmailType::class, [
+                'attr' => ['placeholder' => 'Votre adresse Email'],
+                'constraints' => [
+                    new NotBlank(["message" => "Veuillez fournir un email valide"]),
+                    new Email(["message" => "Votre email ne semble pas valide"])
+                    ],
+            ])
             ->add('firstname')
             ->add('lastname')
             ->add('adress')
