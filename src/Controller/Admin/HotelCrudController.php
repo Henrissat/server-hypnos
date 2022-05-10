@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 //paramètre des champs du hotel
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -33,7 +34,7 @@ class HotelCrudController extends AbstractCrudController
             TextField::new('city', 'Ville'),
             TextField::new('adress', 'Adresse'),
             TextField::new('title', 'Titre'),
-            TextEditorField::new('Description'),
+            TextareaField::new('Description'),
             ImageField::new('img_header', 'Image d\'entête')
                 ->setBasePath(self::HOTEL_BASE_PATH)
                 ->setUploadDir(self::HOTEL_UPLOAD_DIR)

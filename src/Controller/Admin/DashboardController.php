@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 use App\Entity\Room;
 use App\Entity\Hotel;
+use App\Entity\Gerant;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -76,5 +77,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Voir les Chambres', 'fas fa-eye', Room::class)
         ]);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::section('Gérant');
+        yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Ajouter gérant', 'fas fa-plus', Gerant::class)->setAction(crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir les gérants', 'fas fa-eye', Gerant::class)
+        ]);
     }
 }

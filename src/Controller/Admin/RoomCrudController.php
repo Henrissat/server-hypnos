@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 //paramètre des champs du formulaire
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -62,8 +63,8 @@ class RoomCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name', 'Nom de la suite'),
             TextField::new('description', 'Description'),
-            TextField::new('shortdescription', 'Courte description'),
-            TextField::new('content', 'Contenu de la page'),
+            TextareaField::new('shortdescription', 'Courte description'),
+            TextareaField::new('content', 'Contenu de la page'),
             ImageField::new('pictures', 'Photo')
                 ->setBasePath(self::ROOM_BASE_PATH)
                 ->setUploadDir(self::ROOM_UPLOAD_DIR)
@@ -74,7 +75,7 @@ class RoomCrudController extends AbstractCrudController
                 ->setUploadDir(self::ROOM_UPLOAD_DIR)
                 //Autoriser le clic sur la colonne pour trier le contenu du contrôle en fonction du champ de cette colonne.
                 ->setSortable(false),
-            MoneyField::new('price', 'Prix')->setCurrency('EUR'),
+            MoneyField::new('price', 'Prix')->setCurrency('EUR')->setNumDecimals(0),
             IntegerField::new('capacity', 'Capacité'),
             IntegerField::new('size', 'Taille'),
             IntegerField::new('bed', 'Nombre de lit'),
