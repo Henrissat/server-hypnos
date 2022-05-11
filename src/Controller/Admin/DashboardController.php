@@ -52,7 +52,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Hotels')
             ->setPermission('ROLE_ADMIN');
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
-            MenuItem::linkToCrud('Ajouter Hotel', 'fas fa-plus', Hotel::class)->setAction(crud::PAGE_NEW),
+            MenuItem::linkToCrud('Ajouter Hotel', 'fas fa-plus', Hotel::class)->setAction(crud::PAGE_NEW)
+                ->setPermission('ROLE_SUPERADMIN'),
             MenuItem::linkToCrud('Voir les Hotels', 'fas fa-eye', Hotel::class)
         ]);
         //ajout des chambres dans le menu
@@ -65,10 +66,10 @@ class DashboardController extends AbstractDashboardController
 
         //partie pour les Admins
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
-        yield MenuItem::section('Gérant')
-            ->setPermission('ROLE_SUPERADMIN');
+        yield MenuItem::section('Gérant');
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
-            MenuItem::linkToCrud('Ajouter gérant', 'fas fa-plus', Gerant::class)->setAction(crud::PAGE_NEW),
+            MenuItem::linkToCrud('Ajouter gérant', 'fas fa-plus', Gerant::class)->setAction(crud::PAGE_NEW)
+                ->setPermission('ROLE_SUPERADMIN'),
             MenuItem::linkToCrud('Voir les gérants', 'fas fa-eye', Gerant::class)
         ]);
     }
