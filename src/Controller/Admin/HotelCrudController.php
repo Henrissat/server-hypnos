@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Hotel;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-//paramètre des champs du hotel
+//paramètre des champs de Hotel
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;

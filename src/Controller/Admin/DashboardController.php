@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+//use Doctrine\ORM\EntityManagerInterface;
+//use Symfony\Component\Security\Core\User\UserInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -9,8 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-
+//import des Entity
 use App\Entity\Room;
 use App\Entity\Hotel;
 use App\Entity\Gerant;
@@ -23,7 +26,7 @@ class DashboardController extends AbstractDashboardController
     ) {
     }
 
-    //#[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {       
@@ -44,20 +47,26 @@ class DashboardController extends AbstractDashboardController
     //Gérer le menu Dashboard des Hotels et Chambres
     public function configureMenuItems(): iterable
     {
+        //Partie pour les Gérants
         //ajout des hotels dans le menu
-        yield MenuItem::section('Hotels');
+        yield MenuItem::section('Hotels')
+            ->setPermission('ROLE_ADMIN');
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Ajouter Hotel', 'fas fa-plus', Hotel::class)->setAction(crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir les Hotels', 'fas fa-eye', Hotel::class)
         ]);
         //ajout des chambres dans le menu
-        yield MenuItem::section('Chambres');
+        yield MenuItem::section('Chambres')
+            ->setPermission('ROLE_ADMIN');
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Ajouter Chambre', 'fas fa-plus', Room::class)->setAction(crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir les Chambres', 'fas fa-eye', Room::class)
         ]);
+
+        //partie pour les Admins
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
-        yield MenuItem::section('Gérant');
+        yield MenuItem::section('Gérant')
+            ->setPermission('ROLE_SUPERADMIN');
         yield MenuItem::subMenu('Actions', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Ajouter gérant', 'fas fa-plus', Gerant::class)->setAction(crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir les gérants', 'fas fa-eye', Gerant::class)
