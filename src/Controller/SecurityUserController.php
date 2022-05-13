@@ -28,8 +28,10 @@ class SecurityUserController extends AbstractController
     }
 
     #[Route(path: '/logout', name: 'user_logout')]
-    public function logout(): void
+    public function logout(): Response
     {
         throw new \LogicException('Cette méthode peut être vide - elle sera interceptée par la clé de déconnexion de votre pare-feu.');
+        //redirection vers le site Hypnos
+        return $this->redirect('https://hypnos.netlify.app/');
     }
 }
